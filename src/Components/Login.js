@@ -13,7 +13,7 @@ export const Login = () => { //since this is not default export you will have to
     
     return(
         <>
-        <form action="" method = "get" onSubmit={handleSubmit}>
+        <form action="/user/login" method = "get" onSubmit={handleSubmit}>
             <label htmlFor="email">Enter your Email:</label><br/>
             <input type="email" value= {email} placeholder="yourmail@gmail.com" id="email" name="email"/><br/>
             <label htmlFor="password">Enter your Password:</label><br/>

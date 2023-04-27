@@ -11,7 +11,7 @@ export const Register = () => { //since this is not default export you will have
 
     return(
         <>
-        <form method = "post" action="" onSubmit={handleSubmit}>
+        <form method = "post" action="/user/register" onSubmit={handleSubmit}>
             <label htmlFor="fname">Enter your First Name:</label><br/>
             <input type="text" placeholder="First Name" id="fname" name="fname"/><br/>
             <label htmlFor="lname">Enter your Last Name:</label><br/>
