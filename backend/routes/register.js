@@ -40,10 +40,10 @@ router.post('/', [
                 if(!errors.isEmpty()){
                   return res.status(400).json({errors: errors.array()});  
                 }
-                try{   
+                try{//the user with registered email already exists   
                     let user =  await User.findOne({email:req.body.email});
                     if(user){
-                    return res.status(400).json({error: "Sorry a user with this this mail id already exists"});
+                    return res.status(400).json({error: "Sorry a user with this this mail id already exists. Kindly login"});
                     }
                     //generating the salt and then appending the salt with the user's password
                     const salt = await bcrypt.genSalt(10);

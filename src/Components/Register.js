@@ -1,4 +1,5 @@
 import react, {useState, useEffect} from 'react'
+import qrcode from "qrcode";
 
 export const Register = () => { //since this is not default export you will have to import it using the same name Register and with {}
     const [email, setEmail] = useState('');
@@ -7,6 +8,7 @@ export const Register = () => { //since this is not default export you will have
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        //Function to register 
     }
 
     return(
