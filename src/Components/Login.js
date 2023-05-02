@@ -10,6 +10,7 @@ export const Login = () => { //since this is not default export you will have to
         console.log(e, "onclick");
         //function to verify whether the user's email and password is correct
         
+        
 
     }
     
