@@ -10,10 +10,11 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
+
 //Available Routes ie. we are defining the endpoints over here
 app.use('/user/login', require('./routes/login'));
 app.use('/user/register', require('./routes/register'));
-
+app.get('/test', (req,res)=>{ console.log(req)});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
