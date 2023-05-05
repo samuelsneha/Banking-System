@@ -32,7 +32,8 @@ router.post('/', [
              if(!passwordCompare){
                 return res.status(400).json({error: "Enter the correct password"});
              } 
-             const data = { //? why and 52
+             //to use in jwt for encryption purpose
+             const data = { 
                 userKey: {
                     id: user.id
                 }
@@ -48,8 +49,9 @@ router.post('/', [
              //console.log("qr log",qr(user.id, user.email));
              //LHS can be given any name like here we gave qrCode, RHS qr means the qr function in the qrGenerator.js file as its name is that there, the user is the user we obtained from findOne() function 
              //and by doing user.id means we are sending the id parameter of that obtained user to the qr function
-             //res.json({jwtToken, qrCode:qr(user.id, user.email)}); //here we faced one issue that ?
-             let do_after_getting_qr = (data)=>{ //?
+             //res.json({jwtToken, qrCode:qr(user.id, user.email)}); //we faced the issue that the base64 from the second func of qrCodeGenerator.js file format was visible in terminal ( after a delay ie. after console.log of "qr log" but in actual it should had been before it ) but not in postman. So to resolve this issue we did do_after_getting_qr in this file and what_to_dodo_after_getting_qr(code) in qrCodeGenerator.js file. 
+             //return 
+             let do_after_getting_qr = (data)=>{ //parameter in which code vale from qrGenerator.js will come
                res.json({jwtToken, qrCode:data, otp}); 
              }
              //here we are not calling the function, the entire function will come here
