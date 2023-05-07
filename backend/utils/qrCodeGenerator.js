@@ -1,12 +1,16 @@
 //const User = require('../models/User');
+const jwt = require('jsonwebtoken');
 const QRCode = require('qrcode');
 
- const qr = (currentID, currentEmail, what_to_dodo_after_getting_qr)=> {
+
+ const qr = (currentID, currentEmail, currentOtp, what_to_dodo_after_getting_qr)=> {
   let data = {
     email:currentEmail,
-    id:currentID
+    id:currentID //here otp wont come right
   }
   let stringdata = JSON.stringify(data);
+  //In the login.js file we created the jwt token and here we are encrypting it
+  const encryptedJwtToken = jwt.sign(stringdata, currentOtp.toString()); //jwt token requires both to be in string data type only
   // let getQRCode =  QRCode.toString(stringdata,{type:'terminal'},function (err, QRcode) {
   //     if(err) 
   //     return console.log("error occurred")
@@ -14,10 +18,11 @@ const QRCode = require('qrcode');
   //     return QRcode // this return gives in a wierd format like 47m...in postman which is not understandable and we had put it in a npm qr code package which gave us error,  so we didnt take this
   // });
   //return getQRCode; // this goes to its parent ie. qr function
-  let getCode =  QRCode.toDataURL(stringdata, function (err, code) { //this we are getting in base 64 format and when we copied the content in img src attribite we got the o/p we needed so we selected it
+  let netlifyURL = "https://lighthearted-phoenix-47e0f4.netlify.app/" 
+  let getCode =  QRCode.toDataURL(netlifyURL+'enterOtp/?'+encryptedJwtToken, function (err, code) { //? whats this link, earlier what it was //this we are getting in base 64 format and when we copied the content in img src attribite we got the o/p we needed so we selected it
       if(err) 
-      return console.log("error occurred")
-      console.log(code)
+      return console.log("error occurred") 
+      console.log(code) //QR Code in base 64 format
       what_to_dodo_after_getting_qr(code) //here in this line do_after_getting_qr of login.js function is executed. We did it purposely so that what_to_dodo_after_getting_qr function waits to get the code value and then sends the code value to the data parameter in do_after_getting_qr function of login.js and executes it to give us token , data and otp. Our way of resolving the issue
       return code; //returns undefined coz its not a function and does not wait for code value unlike above function
   });

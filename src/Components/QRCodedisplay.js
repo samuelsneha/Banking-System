@@ -1,5 +1,6 @@
 import React from 'react'
 
+//where are we navigating to this page?
 export const QRCodedisplay = ({userData}) => {
   return (
     <div>QRCodedisplay
@@ -7,3 +8,5 @@ export const QRCodedisplay = ({userData}) => {
     </div>
   )
 }
+
+//flow of the process?

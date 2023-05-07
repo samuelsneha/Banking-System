@@ -7,6 +7,8 @@ const jwt = require('jsonwebtoken');
 
 const JWT_Secret = 'Hello World'; 
 
+//? confused about what exactly work is done here and what should be done in api
+
 //SECOND WE DID THIS TO CREATE VALIDATIONS IN OUR PROJECT, VALIDATIONS ARE IMPORTANT SO THAT PEOPLE CANT PUT ANYTHING IN THE INPUT FIELDS
 //    router.post('/', [
 //        body('name', 'Enter a valid name').isLength({ min:3}),
@@ -30,8 +32,8 @@ const JWT_Secret = 'Hello World';
 //     });
 
 //THIRD WE DID THS AND COMMENTED THE 'User.createIndexes();'. User.createIndexes(); is an inbuilt way to figure out whether the email is nique or no, but here this one does it in a customized way
-router.post('/', [
-              body('name', 'Enter a valid name').isLength({ min:3}),
+router.post('/', [ // this path should match with the Backend ks index.js route for thsi page 
+              body('name', 'Enter a valid name').isLength({ min:3}), //body from line 4 express validotor
               body('email', 'Enter a valid email').isEmail(),
               body('password', 'Password must be atleast 5 characters').isLength({ min:5}),
               body('imei', 'IMEI Number must be atleast 5 digits').isLength({ min:5}),
@@ -46,7 +48,8 @@ router.post('/', [
                     return res.status(400).json({error: "Sorry a user with this this mail id already exists. Kindly login"});
                     }
                     //generating the salt and then appending the salt with the user's password
-                    const salt = await bcrypt.genSalt(10);
+                    //Hashing the password using bcrypt 
+                    const salt = await bcrypt.genSalt(10); 
                     const hashedPass = await bcrypt.hash(req.body.password, salt);
                     //creating the new user
                     user = await User.create({
@@ -54,6 +57,7 @@ router.post('/', [
                             email:req.body.email,
                             password:hashedPass,
                             imei:req.body.imei,
+                            activate:false,
                     });
                     //creating the jwt token
                     const data = {
@@ -71,14 +75,5 @@ router.post('/', [
                 }
             });
 
-
-// FIRST WE DID THIS
-// router.post('/', (req,res) => {
-//     console.log((req.body))
-//     const user = User(req.body);
-//     console.log(user);
-//     user.save();
-//     res.send(req.body + "hello");
-// });
 
 module.exports = router

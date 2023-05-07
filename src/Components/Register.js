@@ -13,15 +13,16 @@ export const Register = () => {
 
   return (
     <>
-      <div>
+    
+      <div>  
         <label htmlFor="fname">Enter your First Name:</label>
         <br />
         <input
           type="text"
           placeholder="First Name"
           id="fname"
-          name="fname"
-          value={fname}
+          name="fname" //used only when form tag with action attribute and the value of name attribute is decided by us (can keep whatever we want) and that name becomes the key
+          value={fname} //variable fName declared above
           onChange={(e) => {
             //onChange gives whatever you typed in the input box
             setfName(e.target.value);
@@ -82,9 +83,11 @@ export const Register = () => {
         />
         <button
           type="submit"
-          onClick={() => {
+          onClick={() => { 
+            //API does the work of passing the data to the routes and it goes through index,js for it
             registerAPI({
-              name: fname+" " +lname,
+              //next 4 lines is body of the api
+              name: fname + " " + lname,
               email: email,
               password: password,
               imei: imei,

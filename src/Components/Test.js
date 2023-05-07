@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React from 'react'
 import { testAPI } from '../utils/api';
-
+//?what is this file doing and why inside components
 const current_qr = ""
 export const Test = () => {
  

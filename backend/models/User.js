@@ -22,6 +22,11 @@ const UserSchema = new Schema({
     date:{
         type:Date,
         default: Date.now
+    },
+    activate:{
+        type:Boolean,
+        default:false,
+        required:true  //successful 2fa makes activate true; unsuccessful 2fa makes it default ie. false
     }
 });
 const User = mongoose.model('user', UserSchema);
