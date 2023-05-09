@@ -10,7 +10,10 @@ connectToMongo();
 app.use(express.json());//now using this middleware you can access request.body
 app.use( //gives access to apis to redirect through a secure path even while using http  
   cors(
-    // origin: ["http://localhost:3000"], //from where the api starts ie. the front end
+    //{
+  //  origin: ["http://localhost:3000", 'https://lighthearted-phoenix-47e0f4.netlify.app'], //from where the api starts ie. the front end
+ // }
+   
   )
 );
 app.get('/', (req, res) => {
