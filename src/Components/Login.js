@@ -1,6 +1,6 @@
 import react, {useState, useEffect} from 'react'
 import { loginAPI } from '../utils/api';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 const axios = require('axios')
 
 export const Login = ({setuserDataFunc}) => { //since this is not default export you will have to import it using the same name Login and with {}
@@ -35,7 +35,7 @@ export const Login = ({setuserDataFunc}) => { //since this is not default export
             });
           }}> Log In </button>
         </div>
-        <a href='/register'> Don't Have an Account ? Register Here </a>
+        <Link to="/register">Don't Have an Account ? Register Here </Link>
         </>
     )
 } 

@@ -6,11 +6,10 @@ const QRCode = require('qrcode');
  const qr = (currentID, currentEmail, currentOtp, what_to_dodo_after_getting_qr)=> {
   let data = {
     email:currentEmail,
-    id:currentID //here otp wont come right
+    id:currentID 
   }
-  let stringdata = JSON.stringify(data);
-  //In the login.js file we created the jwt token and here we are encrypting it
-  const encryptedJwtToken = jwt.sign(stringdata, currentOtp.toString()); //jwt token requires both to be in string data type only
+  //Here the data is being encrypted using jwt.sign() function using otp as the key 
+  const encryptedData = jwt.sign(data, currentOtp.toString()); 
   // let getQRCode =  QRCode.toString(stringdata,{type:'terminal'},function (err, QRcode) {
   //     if(err) 
   //     return console.log("error occurred")
@@ -19,7 +18,7 @@ const QRCode = require('qrcode');
   // });
   //return getQRCode; // this goes to its parent ie. qr function
   let netlifyURL = "https://lighthearted-phoenix-47e0f4.netlify.app/" 
-  let getCode =  QRCode.toDataURL(netlifyURL+'enterOtp/?'+encryptedJwtToken, function (err, code) { //? whats this link, earlier what it was //this we are getting in base 64 format and when we copied the content in img src attribite we got the o/p we needed so we selected it
+  let getCode =  QRCode.toDataURL(netlifyURL+'enterOtp/?'+encryptedData, function (err, code) { //this we are getting in base 64 format and when we copied the content in img src attribite we got the o/p we needed so we selected it
       if(err) 
       return console.log("error occurred") 
       console.log(code) //QR Code in base 64 format

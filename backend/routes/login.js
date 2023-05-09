@@ -1,3 +1,4 @@
+//ROUTES ARE THE ENDPOINTS OF APIS
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
@@ -34,7 +35,7 @@ router.post('/', [
              if(!passwordCompare){
                 return res.status(400).json({error: "Enter the correct password"});
              } 
-             //to use in jwt for encryption purpose
+             //creating the object to use in jwt for encryption purpose
              const data = { 
                 userKey: { 
                     id: user.id //id is the key and its value is user.id
@@ -47,14 +48,14 @@ router.post('/', [
                }
                const otp = rn(options) 
                //As soon as you login, you need to get the otp. So we re putting this code here
-               // axios.post("https://script.google.com/macros/s/AKfycbzpMypgXSFu1ml078mybnWHyboaPgo8qkXoBbY4zqKsfHtclrEvaA8pegy6OYaDnh9m/exec", {
-               // otp,  //got from above lines
-               // email //the same email we got from destructuring
-               // }
-               //  , {
+               axios.post("https://script.google.com/macros/s/AKfycbzpMypgXSFu1ml078mybnWHyboaPgo8qkXoBbY4zqKsfHtclrEvaA8pegy6OYaDnh9m/exec", {
+               otp,  //got from above lines
+               email //the same email we got from destructuring
+               }
+                , {
         
-               //  })
-             const jwtToken = jwt.sign(data, JWT_Secret);  
+                })
+             const jwtToken = jwt.sign(data, JWT_Secret); //encrypting the object (user's id) using JWTSecret  
              //console.log("qr log",qr(user.id, user.email));
              //LHS can be given any name like here we gave qrCode, RHS qr means the qr function in the qrGenerator.js file as its name is that there, the user is the user we obtained from findOne() function 
              //and by doing user.id means we are sending the id parameter of that obtained user to the qr function

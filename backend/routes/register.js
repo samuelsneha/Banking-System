@@ -1,3 +1,4 @@
+//ROUTES ARE THE ENDPOINTS OF APIS
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');

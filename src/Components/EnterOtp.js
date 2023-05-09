@@ -1,7 +1,9 @@
 import React, { useState } from 'react'//? different from others
 import { verifyOtp } from '../utils/api'; //?
 
-//where are we navigating to this page?
+//we navigate to this page after scanning the qr code
+//since we want to redirect the displayed qr code along with its encrypted data, we have mentioned the navigation to this page in qrCodeGenerator.js file where we are getting the qr code
+//the qr code scanner application scans the qr code, reads the 'netlifyURL+'enterOtp/?'+encryptedData' in the form of string and then redirects
 export const EnterOtp = () => {
   const [otp, setOtp] = useState("")
 
