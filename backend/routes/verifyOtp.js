@@ -24,7 +24,7 @@ router.post('/', [
                             res.json({status:true, message:err});
                         }
                         console.log("decrypt success", data);
-                        res.json({status:false, message:data});
+                        res.json({status:false, message:err?"decryption error":data});
                       });
                     
                    

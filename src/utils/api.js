@@ -2,7 +2,7 @@
 import axios from "axios";
 //this link we have taken after downloading ngrok and then typing the commaind "ngrok http 5000" in the ngrok terminal and then /user remains as it is
 //initially it was "http://localhost:5000/user "
-const base_url = "https://6ca9-103-10-226-160.ngrok-free.app"+'/user'  
+const base_url = "https://c33a-203-194-105-190.ngrok-free.app"+'/user'  
 
 
 export const testAPI = () => {
@@ -17,7 +17,7 @@ export const testAPI = () => {
     });
   }
 
-  export const registerAPI = (body) => { // register of routes work should be here na? confused between api and routes work?
+  export const registerAPI = (body) => { 
     axios.post(base_url+"/register", //the route here should be quivalent to the route in index.js of BE
     // what all data we want to send while hitting the request comes here like the body of the request
     body
