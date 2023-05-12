@@ -2,7 +2,7 @@
 import axios from "axios";
 //this link we have taken after downloading ngrok and then typing the commaind "ngrok http 5000" in the ngrok terminal and then /user remains as it is
 //initially it was "http://localhost:5000/user "
-const base_url = "https://c33a-203-194-105-190.ngrok-free.app"+'/user'  
+const base_url = "https://a59d-103-44-106-78.ngrok-free.app"+'/user'  
 
 
 export const testAPI = () => {

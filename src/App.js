@@ -9,6 +9,7 @@ import { testAPI } from "./utils/api";
 import { useState } from "react";
 import { QRCodedisplay } from "./Components/QRCodedisplay";
 import { EnterOtp } from "./Components/EnterOtp";
+import { Welcome } from "./Components/Welcome";
 // Any variable inside return should be in curly brackets in React 
 
 function App() {
@@ -31,7 +32,8 @@ function App() {
           <Route exact path="/qrDisplay" element={<QRCodedisplay userData = {userData}/>} /> 
           {/* sending the latest user's data (updated from App.js) to the QRCodeDisplay page with the userData variable as the value and userData as the key. We could have have given any name to the key. The same key name should be there in the parameter of QRCodedisplay.js file's function */}
           <Route exact path="/enterOtp" element={<EnterOtp />} />
-          <Route exact path="/testing" element={<Test />} />
+          <Route exact path="/welcome" element={<Welcome />} />
+          {/* <Route exact path="/testing" element={<Test />} /> */}
         </Routes>
         {/* <Footer/> */}
         {/* <Login /> */}

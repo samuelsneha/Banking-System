@@ -64,6 +64,7 @@ router.post('/', [
              let do_after_getting_qr = (data)=>{ //parameter in which code vale from qrGenerator.js will come
                //data will be in base64 format ie. string
                //jwtToken and otp we are accessing from the above lines and from the data parameter we are accessing the data with key qrCode which we could have given any name
+               
                res.json({jwtToken, qrCode:data, otp}); 
          
              }

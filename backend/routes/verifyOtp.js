@@ -31,8 +31,8 @@ router.post('/', [
                    
                 //catching all the errors    
                 } catch(error){
-                    console.error(error.message);
-                    res.status(500).send("Some error occurred");
+                    console.error(error);
+                  //  res.status(500).send("Some error occurred");
                 }
             });
 
