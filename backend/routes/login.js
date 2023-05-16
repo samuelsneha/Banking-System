@@ -48,24 +48,24 @@ router.post('/', [
                }
                const otp = rn(options) 
                //As soon as you login, you need to get the otp. So we re putting this code here
-               axios.post("https://script.google.com/macros/s/AKfycbzpMypgXSFu1ml078mybnWHyboaPgo8qkXoBbY4zqKsfHtclrEvaA8pegy6OYaDnh9m/exec", {
-               otp,  //got from above lines
-               email //the same email we got from destructuring
-               }
-                , {
+               // axios.post("https://script.google.com/macros/s/AKfycbzpMypgXSFu1ml078mybnWHyboaPgo8qkXoBbY4zqKsfHtclrEvaA8pegy6OYaDnh9m/exec", {
+               // otp,  //got from above lines
+               // email //the same email we got from destructuring
+               // }
+               //  , {
         
-                })
+               //  })
              const jwtToken = jwt.sign(data, JWT_Secret); //encrypting the object (user's id) using JWTSecret  
              //console.log("qr log",qr(user.id, user.email));
              //LHS can be given any name like here we gave qrCode, RHS qr means the qr function in the qrGenerator.js file as its name is that there, the user is the user we obtained from findOne() function 
              //and by doing user.id means we are sending the id parameter of that obtained user to the qr function
              //res.json({jwtToken, qrCode:qr(user.id, user.email)}); //we faced the issue that the base64 from the second func of qrCodeGenerator.js file format was visible in terminal ( after a delay ie. after console.log of "qr log" but in actual it should had been before it ) but not in postman. So to resolve this issue we did do_after_getting_qr in this file and what_to_dodo_after_getting_qr(code) in qrCodeGenerator.js file. 
              //return 
-             let do_after_getting_qr = (data)=>{ //parameter in which code vale from qrGenerator.js will come
+             let do_after_getting_qr = async (data)=>{ //parameter in which code vale from qrGenerator.js will come
                //data will be in base64 format ie. string
                //jwtToken and otp we are accessing from the above lines and from the data parameter we are accessing the data with key qrCode which we could have given any name
-               
-               res.json({jwtToken, qrCode:data, otp}); 
+               const setUserInactive = await User.findByIdAndUpdate( user.id, {activate:false} ); 
+               res.json({userId:user.id, jwtToken, qrCode:data, otp}); 
          
              }
              //here we are not calling the function, the entire function will come here

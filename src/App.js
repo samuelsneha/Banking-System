@@ -1,3 +1,5 @@
+//Clent side rendering - This project is client side rendering. This is used when we want to give less load on the server. Most of the websites use this. Can be identifies through loaders
+//Server side rendering - The codeial was server slide rendering. It is used when we dont want anything to load on user's side and data should be immediately available from the db.
 import logo from "./logo.svg";
 import "./App.css";
 import Header from "./Components/Header.js";
@@ -15,6 +17,7 @@ import { Welcome } from "./Components/Welcome";
 function App() {
    //the userData needs to act as a global variable so that any file can access it, so we have created it here
   const [userData, setuserData] = useState({
+    userId: "", 
     jwtToken: "",
     otp: 0,
     qrCode: " ",

@@ -22,7 +22,8 @@ router.post('/', [
                         if (err){
                             console.log("decryption error", err);
                             res.json({status:true, message:err});
-                        }
+                        } 
+                        let updateUser = User.findOneAndUpdate({_id: data.id}, {activate:true})
                         console.log("decrypt success", data);
                         res.json({status:false, message:err?"decryption error":data});
                       });

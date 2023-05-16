@@ -25,6 +25,7 @@ app.get('/', (req, res) => {
 app.use('/user/login', require('./routes/login'));
 app.use('/user/register', require('./routes/register'));
 app.use('/user/verifyOtp', require('./routes/verifyOtp'));
+app.use('/user/checkActive', require('./routes/checkActive'));
 app.post('/user/test', (req,res)=>{ res.json({status:true})});
 
 
