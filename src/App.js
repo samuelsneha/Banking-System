@@ -20,7 +20,7 @@ function App() {
     userId: "", 
     jwtToken: "",
     otp: 0,
-    qrCode: " ",
+    qrCode: "",
   });
   console.log(userData)
   return (
@@ -35,7 +35,7 @@ function App() {
           <Route exact path="/qrDisplay" element={<QRCodedisplay userData = {userData}/>} /> 
           {/* sending the latest user's data (updated from App.js) to the QRCodeDisplay page with the userData variable as the value and userData as the key. We could have have given any name to the key. The same key name should be there in the parameter of QRCodedisplay.js file's function */}
           <Route exact path="/enterOtp" element={<EnterOtp />} />
-          <Route exact path="/welcome" element={<Welcome />} />
+          <Route exact path="/welcome" element={<Welcome userData = {userData}/>} />
           {/* <Route exact path="/testing" element={<Test />} /> */}
         </Routes>
         {/* <Footer/> */}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'//? different from others
-import { verifyOtp } from '../utils/api'; //?
+import { verifyOtpAPI } from '../utils/api'; //?
 
 //we navigate to this page after scanning the qr code
 //since we want to redirect the displayed qr code along with its encrypted data, we have mentioned the navigation to this page in qrCodeGenerator.js file where we are getting the qr code
@@ -14,7 +14,8 @@ export const EnterOtp = () => {
           onChange={(e) => {
             setOtp(e.target.value);
           }}/>
-          <button onClick={() => verifyOtp( {otp, qrCode:window.location.search}, ()=> {})}>Verify</button>
+          <button onClick={() => verifyOtpAPI( {otp, qrCode:window.location.search}, ()=> {})}>Verify</button>
+          {/* so basically here we are sending the otp and the encrypted string to the api */}
     </div>
   )
 }

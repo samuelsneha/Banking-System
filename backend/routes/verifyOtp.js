@@ -6,7 +6,7 @@ const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-//here we are from the EnterOtp.js through verifyOtp of api.js
+//here we are from the EnterOtp.js through verifyOtpAPI of api.js
 router.post('/', [
               body('otp', 'Enter the otp').isLength({ min:3}),
               body('qrCode', 'QR Error').isLength({min:1})
@@ -15,17 +15,17 @@ router.post('/', [
                 if(!errors.isEmpty()){
                   return res.status(400).json({errors: errors.array()});  
                 }
-                const { otp, qrCode} = req.body;
+                const { otp, qrCode} = req.body;//destructuring
                 try{
                     console.log(req.body)
-                    jwt.verify(qrCode.slice(1), otp, (err, data) => {
+                    jwt.verify(qrCode.slice(1), otp, async(err, data) => {
                         if (err){
                             console.log("decryption error", err);
-                            res.json({status:true, message:err});
+                            res.json({status:false, message:err});
                         } 
-                        let updateUser = User.findOneAndUpdate({_id: data.id}, {activate:true})
+                        let updateUser = await User.findOneAndUpdate({_id: data.id}, {activate:true})
                         console.log("decrypt success", data);
-                        res.json({status:false, message:err?"decryption error":data});
+                        res.json({status:true, message:data});//status and message are keys and any word can be use there
                       });
                     
                    

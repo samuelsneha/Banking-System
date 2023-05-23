@@ -18,6 +18,7 @@ const QRCode = require('qrcode');
   // });
   //return getQRCode; // this goes to its parent ie. qr function
   let netlifyURL = "https://lighthearted-phoenix-47e0f4.netlify.app/" 
+  console.log(netlifyURL+'enterOtp/?'+encryptedData)
   let getCode =  QRCode.toDataURL(netlifyURL+'enterOtp/?'+encryptedData, function (err, code) { //this we are getting in base 64 format and when we copied the content in img src attribite we got the o/p we needed so we selected it
       if(err) 
       return console.log("error occurred") 

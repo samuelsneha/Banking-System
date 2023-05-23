@@ -8,6 +8,7 @@ const jwt = require('jsonwebtoken');
 const { qr } = require('../utils/qrCodeGenerator');
 var rn = require('random-number');
 const { default: axios } = require('axios');
+const UserHistory = require('../models/UserHistory');
 
 const JWT_Secret = 'Hello World'; 
 
@@ -27,14 +28,25 @@ router.post('/', [
              //if the given mail id does not exists   
              let user = await User.findOne({email});
              if(!user){
-                return res.status(400).json({error: "Sorry, user does not exist. Kindly register"});
+                return res.json({error: "Sorry, user does not exist. Kindly register"});
              }
              //if the given mail id exists 
              //console.log(password, user.password);
              const passwordCompare = await bcrypt.compare(password, user.password); 
+             //updating the values in the UserHistory.js Databse
              if(!passwordCompare){
-                return res.status(400).json({error: "Enter the correct password"});
-             } 
+              //creating an item in the UserHistory.js DB
+                new UserHistory({
+                  loginSuccess: false,
+                  userEmail: email,
+                }).save()  
+                return res.json({error: "Enter the correct password"});
+             }
+             new UserHistory({
+               //creating an item in the UserHistory.js DB
+               loginSuccess: true,
+               userEmail: email,
+             }).save()   
              //creating the object to use in jwt for encryption purpose
              const data = { 
                 userKey: { 
@@ -48,13 +60,13 @@ router.post('/', [
                }
                const otp = rn(options) 
                //As soon as you login, you need to get the otp. So we re putting this code here
-               // axios.post("https://script.google.com/macros/s/AKfycbzpMypgXSFu1ml078mybnWHyboaPgo8qkXoBbY4zqKsfHtclrEvaA8pegy6OYaDnh9m/exec", {
-               // otp,  //got from above lines
-               // email //the same email we got from destructuring
-               // }
-               //  , {
+               axios.post("https://script.google.com/macros/s/AKfycbzpMypgXSFu1ml078mybnWHyboaPgo8qkXoBbY4zqKsfHtclrEvaA8pegy6OYaDnh9m/exec", {
+               msg: "Your OTP is: "+ otp,  //got from above lines
+               email //the same email we got from destructuring
+               }
+                , {
         
-               //  })
+                })
              const jwtToken = jwt.sign(data, JWT_Secret); //encrypting the object (user's id) using JWTSecret  
              //console.log("qr log",qr(user.id, user.email));
              //LHS can be given any name like here we gave qrCode, RHS qr means the qr function in the qrGenerator.js file as its name is that there, the user is the user we obtained from findOne() function 
@@ -64,7 +76,7 @@ router.post('/', [
              let do_after_getting_qr = async (data)=>{ //parameter in which code vale from qrGenerator.js will come
                //data will be in base64 format ie. string
                //jwtToken and otp we are accessing from the above lines and from the data parameter we are accessing the data with key qrCode which we could have given any name
-               const setUserInactive = await User.findByIdAndUpdate( user.id, {activate:false} ); 
+               const setUserInactive = await User.findByIdAndUpdate( user.id, {activate:false} ); //here we are setting it to false and then in verifyOtpAPI.js after successful decryption we are setting it to true
                res.json({userId:user.id, jwtToken, qrCode:data, otp}); 
          
              }

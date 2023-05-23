@@ -46,7 +46,7 @@ router.post('/', [ // this path should match with the Backend ks index.js route 
                 try{//the user with registered email already exists   
                     let user =  await User.findOne({email:req.body.email});
                     if(user){
-                    return res.status(400).json({error: "Sorry a user with this this mail id already exists. Kindly login"});
+                    return res.json({error: "Sorry a user with this this mail id already exists. Kindly login"});
                     }
                     //generating the salt and then appending the salt with the user's password
                     //Hashing the password using bcrypt 
@@ -66,7 +66,7 @@ router.post('/', [ // this path should match with the Backend ks index.js route 
                             id: user.id
                         }
                     }
-                    const jwtToken = jwt.sign(data, JWT_Secret);
+                    const jwtToken = jwt.sign(data, JWT_Secret); //no use of this here
                     //res.json(user) earlier we did this
                     res.json(jwtToken);
                 //catching all the errors    

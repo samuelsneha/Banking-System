@@ -1,6 +1,7 @@
 import react, { useState, useEffect } from "react";
 import qrcode from "qrcode";
 import { registerAPI } from "../utils/api";
+import { useNavigate } from "react-router-dom";
 const axios = require("axios");
 
 export const Register = () => {
@@ -10,6 +11,7 @@ export const Register = () => {
   const [fname, setfName] = useState("");
   const [lname, setlName] = useState("");
   const [imei, setImei] = useState("");
+  const navigate = useNavigate()
 
   return (
     <>
@@ -91,7 +93,7 @@ export const Register = () => {
               email: email,
               password: password,
               imei: imei,
-            });
+            }, (data) => navigate('/login') );
           }}
         >
           Register
