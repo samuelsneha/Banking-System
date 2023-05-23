@@ -25,10 +25,10 @@ app.get('/', (req, res) => {
 //BACKEND ROUTES ARE USED TO PLAY WITH USER'S DATA
 app.use('/user/login', require('./routes/login'));
 app.use('/user/register', require('./routes/register'));
-app.use('/user/verifyOtpAPI', require('./routes/verifyOtp'));
-app.use('/user/checkActiveAPI', require('./routes/checkActive'));
- app.use('/user/getHistoryAPI', require('./routes/getHistory'));
- app.use('/user/counterAttemptAPI', require('./routes/counterAttempt'));
+app.use('/user/verifyOtp', require('./routes/verifyOtp'));
+app.use('/user/checkActive', require('./routes/checkActive'));
+ app.use('/user/getHistory', require('./routes/getHistory'));
+ app.use('/user/counterAttempt', require('./routes/counterAttempt'));
 app.post('/user/test', (req,res)=>{ res.json({status:true})});
 
 

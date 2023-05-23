@@ -41,9 +41,11 @@ export const Welcome = ({ userData }) => {
           })}
         </div>
       )}
-      {/* <button type='submit'  onClick={() => {
-      handleClick()
-    }}> Log In </button> */}
+      <button type='submit'  onClick={() => {
+        (localStorage.setItem("bankingToken", '')) 
+        navigate('/login')
+
+    }}> Log Out </button>
     </>
   );
 };

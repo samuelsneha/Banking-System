@@ -12,7 +12,7 @@ const JWT_Secret = 'Hello World';
 
 //checkActiveAPI.js checks with database wether the user is active or not and if yes then creates the token
 router.post('/', [
-        body('user', 'Enter a valid user id').isLength({min:1})
+        body('userID', 'Enter a valid user id').isLength({min:1})
     ] , async (req,res) => { 
         //if the above validations are not satisfied then we create errors 
         const errors = validationResult(req);
@@ -41,7 +41,7 @@ router.post('/', [
         
 
         }catch(error){
-           console.error(error.message);
+           console.error(error);
            res.status(500).send("Some error occurred");
         }
 

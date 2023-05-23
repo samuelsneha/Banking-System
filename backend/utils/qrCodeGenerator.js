@@ -22,7 +22,7 @@ const QRCode = require('qrcode');
   let getCode =  QRCode.toDataURL(netlifyURL+'enterOtp/?'+encryptedData, function (err, code) { //this we are getting in base 64 format and when we copied the content in img src attribite we got the o/p we needed so we selected it
       if(err) 
       return console.log("error occurred") 
-      console.log(code) //QR Code in base 64 format
+      //console.log(code) //QR Code in base 64 format
       what_to_dodo_after_getting_qr(code) //here in this line do_after_getting_qr of login.js function is executed. We did it purposely so that what_to_dodo_after_getting_qr function waits to get the code value and then sends the code value to the data parameter in do_after_getting_qr function of login.js and executes it to give us token , data and otp. Our way of resolving the issue
       return code; //returns undefined coz its not a function and does not wait for code value unlike above function
   });
