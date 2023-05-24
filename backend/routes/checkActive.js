@@ -33,9 +33,7 @@ router.post('/', [
              }
           const jwtToken = jwt.sign(data, JWT_Secret);
                res.json({ userIsActive:foundUser.activate, token:jwtToken}); 
-               //userIsActive and token are the keys - any name
-               //foundUser and jwtToken from above lines
-               //foundUser.activate is the field of foundUser in the User db
+              
          
              
         

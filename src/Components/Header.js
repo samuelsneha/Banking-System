@@ -1,60 +1,96 @@
 //props is something we pass as a variable to get rendered in our components.
-// State belongs to a component, it was developed so that we can use features( like instead of this.state we use useState() ) of a class based component in function based component, it should be inside a function only, can be used in {} throughout your component, 
-import React, {useEffect, useState} from 'react'
-import bankImage from '../bankImage.jpg' //by doing ../ you reached to components and all files in it parallel where one of the file is the bankImage
-import './Header.css';
-import {Login} from './Login';
-import {Register} from './Register'; //for default export we don't require {} but for other export we require {}
-//import { useNavigate } from "react-router-dom";
-import {
-    BrowserRouter as Router,
-    Routes,
-    Route,
-    Link 
-} from 'react-router-dom'
+// State belongs to a component, it was developed so that we can use features( like instead of this.state we use useState() ) of a class based component in function based component, it should be inside a function only, can be used in {} throughout your component,
+import React, { useEffect, useState } from "react";
+import bankImage from "../bankImage.jpg"; //by doing ../ you reached to components and all files in it parallel where one of the file is the bankImage
+import "./Header.css";
+import { Login } from "./Login";
+import { Register } from "./Register"; //for default export we don't require {} but for other export we require {}
+import { useNavigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
-export default function Header(){
-    const [theme, setTheme] = useState(true);
+export default function Header() {
+  const [theme, setTheme] = useState(true);
+  const navigate = useNavigate();
+  const convertTheme = () => {
+    setTheme(!theme);
+  };
 
-    const convertTheme=()=>{
-       setTheme(!theme)
+  useEffect(() => {
+    if (!theme) {
+      document.body.classList.add("darkTheme");
+    } else {
+      document.body.classList.remove("darkTheme");
     }
+  });
 
-    useEffect(()=>{
-       if(!theme){
-         document.body.classList.add("darkTheme");
-       }else{
-        document.body.classList.remove("darkTheme");
-       } 
-    })
+  const handleClick = (e) => {
+    //console.log('its inside click button')
+    //  if(e == 'login'){
+    //     console.log('its login')
 
-    const handleClick = (e) => {
-        //console.log('its inside click button')
-         if(e == 'login'){
-            console.log('its login')
+    //  }
+    //  if(e == 'register'){
+    //     console.log('its register')
+    //  }
+    navigate(e);
+  };
 
-         }
-         if(e == 'register'){
-            console.log('its register')
-         }
-         
-    }
-   
-    return(
+  return (
     <>
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
-        < div className="container-fluid">
-            {/* <Router> */}
-            <a href="#"> <img alt="Replublic bank of India" src={bankImage} height={500} width={500}/> </a> 
-            <a className="navbar-brand" href="#">About Us </a>
-            <Link to="/register">
-                <button type="button" class="btn btn-outline-primary" onClick={() => handleClick('register')}>Register </button>
-                 </Link>    
-            <Link to="/login"> <button type="button" className="btn btn-outline-primary" onClick={() => handleClick('login')} >Log In </button> </Link>
-            <button type="button" className="btn btn-outline-primary" onClick={convertTheme}> <i class="fa fa-adjust" aria-hidden="true"></i> </button>
-        </div>    
-    </nav>
+      <div class="navigation-wrap bg-light start-header start-style">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <nav class="navbar navbar-expand-md navbar-light">
+                <a
+                  class="navbar-brand"
+                  target="_blank"
+                >
+                  <img alt="Replublic bank of India" src={bankImage}/>
+                </a>
+
+                <button
+                  class="navbar-toggler"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#navbarSupportedContent"
+                  aria-controls="navbarSupportedContent"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                >
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div
+                  class=" navbar_flex"
+                  id="navbarSupportedContent"
+                >
+                  <ul class="navbar-nav ml-auto py-4 py-md-0">
+                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                      <a class="nav-link" href="#">
+                        About Us
+                      </a>
+                    </li>
+                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"  onClick={() => handleClick("/register")}>
+                      Register
+                      
+
+                    </li>
+                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"  onClick={() => handleClick("/login")}>
+                      
+                        Login
+                    </li>
+                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4" onClick={convertTheme}>
+                    <i className="fa fa-adjust" aria-hidden="true"></i>
+                    </li>
+                  </ul>
+                </div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
      
     </>
-    );
+  );
 }

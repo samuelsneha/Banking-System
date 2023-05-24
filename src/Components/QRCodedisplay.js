@@ -8,9 +8,9 @@ export const QRCodedisplay = ({userData}) => {
   let c = () => {
       setTimeout(() => {
       checkActiveAPI({userID:userData.userId}, (data) => {
-        console.log(data) //the two return statements from checkActiveAPI.js 
+        console.log(data) 
         localStorage.setItem("bankingToken", data.token); //setting the localStorage which is in the user's UI with the token. .token is coming from the checkActiveAPI.js as the key 
-        if(data.userIsActive){ //.userIsActive is coming from the checkActiveAPI.js as the key 
+        if(data.userIsActive){ 
           navigate('/welcome')
           return
         }
