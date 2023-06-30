@@ -1,0 +1,41 @@
+.register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  > div {
+    width: 350px;
+    padding: 30px;
+    border: 1px solid #e1e1e1;
+    border-radius: 10px;
+    label,
+    button,
+    input {
+      width: 100%;
+    }
+    input {
+      margin: 0 0 15px 0;
+      border-radius: 5px;
+      border: 1px solid;
+      padding: 5px 10px;
+    }
+    label {
+      margin: 0 0 5px 0;
+    }
+    .submit {
+      border: 1px solid #000;
+      font-weight: 600;
+      text-transform: uppercase;
+      border-radius: 5px;
+      background: #8ec1ff;
+      margin: 10px 0 0 0;
+    }
+    .already_account {
+      margin: 20px 0 0 0;
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+}

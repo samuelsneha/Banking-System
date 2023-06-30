@@ -1,0 +1,13 @@
+*,
+*:after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  @import "./components/Header";
+  @import "./components/register";
+  @import "./components/qr_display";
+  @import "./components/enter_otp";
+}

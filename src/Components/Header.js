@@ -2,7 +2,6 @@
 // State belongs to a component, it was developed so that we can use features( like instead of this.state we use useState() ) of a class based component in function based component, it should be inside a function only, can be used in {} throughout your component,
 import React, { useEffect, useState } from "react";
 import bankImage from "../bankImage.jpg"; //by doing ../ you reached to components and all files in it parallel where one of the file is the bankImage
-import "./Header.css";
 import { Login } from "./Login";
 import { Register } from "./Register"; //for default export we don't require {} but for other export we require {}
 import { useNavigate } from "react-router-dom";
@@ -42,11 +41,8 @@ export default function Header() {
           <div class="row">
             <div class="col-12">
               <nav class="navbar navbar-expand-md navbar-light">
-                <a
-                  class="navbar-brand"
-                  target="_blank"
-                >
-                  <img alt="Replublic bank of India" src={bankImage}/>
+                <a class="navbar-brand" target="_blank">
+                  <img alt="Replublic bank of India" src={bankImage} />
                 </a>
 
                 <button
@@ -61,27 +57,30 @@ export default function Header() {
                   <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div
-                  class=" navbar_flex"
-                  id="navbarSupportedContent"
-                >
+                <div class=" navbar_flex" id="navbarSupportedContent">
                   <ul class="navbar-nav ml-auto py-4 py-md-0">
                     <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
                       <a class="nav-link" href="#">
                         About Us
                       </a>
                     </li>
-                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"  onClick={() => handleClick("/register")}>
+                    <li
+                      class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"
+                      onClick={() => handleClick("/register")}
+                    >
                       Register
-                      
-
                     </li>
-                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"  onClick={() => handleClick("/login")}>
-                      
-                        Login
+                    <li
+                      class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"
+                      onClick={() => handleClick("/login")}
+                    >
+                      Login
                     </li>
-                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4" onClick={convertTheme}>
-                    <i className="fa fa-adjust" aria-hidden="true"></i>
+                    <li
+                      class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"
+                      onClick={convertTheme}
+                    >
+                      <i className="fa fa-adjust" aria-hidden="true"></i>
                     </li>
                   </ul>
                 </div>
@@ -90,7 +89,6 @@ export default function Header() {
           </div>
         </div>
       </div>
-     
     </>
   );
 }

@@ -1,0 +1,171 @@
+*,
+*:after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+body .darkTheme {
+  background-color: black;
+}
+body .fa-adjust {
+  size: 100;
+}
+body .navigation-wrap {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  transition: all 0.3s ease-out;
+}
+body .navbar {
+  padding: 0;
+}
+body .navbar-brand img {
+  height: 7rem;
+  width: auto;
+  display: block;
+  transition: all 0.3s ease-out;
+}
+body .navbar-toggler {
+  float: right;
+  border: none;
+  padding-right: 0;
+}
+body .navbar-toggler:active,
+body .navbar-toggler:focus {
+  outline: none;
+}
+body .navbar-light .navbar-toggler-icon {
+  width: 24px;
+  height: 17px;
+  background-image: none;
+  position: relative;
+  border-bottom: 1px solid #000;
+  transition: all 300ms linear;
+}
+body .navbar-light .navbar-toggler-icon:after,
+body .navbar-light .navbar-toggler-icon:before {
+  width: 24px;
+  position: absolute;
+  height: 1px;
+  background-color: #000;
+  top: 0;
+  left: 0;
+  content: "";
+  z-index: 2;
+  transition: all 300ms linear;
+}
+body .navbar-light .navbar-toggler-icon:after {
+  top: 8px;
+}
+body .navbar-toggler[aria-expanded=true] .navbar-toggler-icon:after {
+  transform: rotate(45deg);
+}
+body .navbar-toggler[aria-expanded=true] .navbar-toggler-icon:before {
+  transform: translateY(8px) rotate(-45deg);
+}
+body .navbar-toggler[aria-expanded=true] .navbar-toggler-icon {
+  border-color: transparent;
+}
+body .nav-link {
+  color: #212121 !important;
+  font-weight: 500;
+  transition: all 200ms linear;
+}
+body .nav-item:hover .nav-link {
+  color: #8167a9 !important;
+}
+body .nav-item.active .nav-link {
+  color: #777 !important;
+}
+body .nav-link {
+  position: relative;
+  padding: 5px 0 !important;
+  display: inline-block;
+}
+body .nav-item:after {
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  content: "";
+  background-color: #8167a9;
+  opacity: 0;
+  transition: all 200ms linear;
+}
+body .nav-item:hover:after {
+  bottom: 0;
+  opacity: 1;
+}
+body .nav-item.active:hover:after {
+  opacity: 0;
+}
+body .nav-item {
+  position: relative;
+  transition: all 200ms linear;
+}
+body .navbar_flex {
+  gap: 10px;
+  margin: 0 0 0 auto;
+}
+body .navbar_flex .navbar-nav {
+  gap: 10px;
+  align-items: center;
+}
+body .register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+body .register > div {
+  width: 350px;
+  padding: 30px;
+  border: 1px solid #e1e1e1;
+  border-radius: 10px;
+}
+body .register > div label,
+body .register > div button,
+body .register > div input {
+  width: 100%;
+}
+body .register > div input {
+  margin: 0 0 15px 0;
+  border-radius: 5px;
+  border: 1px solid;
+  padding: 5px 10px;
+}
+body .register > div label {
+  margin: 0 0 5px 0;
+}
+body .register > div .submit {
+  border: 1px solid #000;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 5px;
+  background: #8ec1ff;
+  margin: 10px 0 0 0;
+}
+body .register > div .already_account {
+  margin: 20px 0 0 0;
+}
+body .register > div .already_account a {
+  text-decoration: none;
+}
+body .qr_display {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+body .qr_display .txt {
+  font-weight: 600;
+  font-size: 30px;
+}
