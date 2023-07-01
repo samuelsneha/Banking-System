@@ -17,7 +17,6 @@ export default function Header() {
   useEffect(() => {
     if (!theme) {
       document.body.classList.add("darkTheme");
-    } else {
       document.body.classList.remove("darkTheme");
     }
   });
@@ -36,16 +35,16 @@ export default function Header() {
 
   return (
     <>
-      <div class="navigation-wrap bg-light start-header start-style">
+      <div class="navigation-wrap bg-light start-header start-style header">
         <div class="container">
           <div class="row">
-            <div class="col-12">
+            <div class="">
               <nav class="navbar navbar-expand-md navbar-light">
                 <a class="navbar-brand" target="_blank">
                   <img alt="Replublic bank of India" src={bankImage} />
                 </a>
 
-                <button
+                {/* <button
                   class="navbar-toggler"
                   type="button"
                   data-toggle="collapse"
@@ -55,33 +54,30 @@ export default function Header() {
                   aria-label="Toggle navigation"
                 >
                   <span class="navbar-toggler-icon"></span>
-                </button>
+                </button> */}
 
-                <div class=" navbar_flex" id="navbarSupportedContent">
-                  <ul class="navbar-nav ml-auto py-4 py-md-0">
-                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                <div class=" navbar_flex">
+                  <ul class="navbar-nav">
+                    <li class="nav-item ">
                       <a class="nav-link" href="#">
                         About Us
                       </a>
                     </li>
                     <li
-                      class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"
+                      class="nav-item"
                       onClick={() => handleClick("/register")}
                     >
                       Register
                     </li>
-                    <li
-                      class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"
-                      onClick={() => handleClick("/login")}
-                    >
+                    <li class="nav-item " onClick={() => handleClick("/login")}>
                       Login
                     </li>
-                    <li
+                    {/* <li
                       class="nav-item pl-4 pl-md-0 ml-0 ml-md-4"
                       onClick={convertTheme}
                     >
                       <i className="fa fa-adjust" aria-hidden="true"></i>
-                    </li>
+                    </li> */}
                   </ul>
                 </div>
               </nav>
